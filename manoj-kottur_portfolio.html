@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#4f46e5', // Indigo 600
+                        secondary: '#0f172a', // Slate 900
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar for a polished look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #4f46e5;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-700 bg-slate-50 antialiased selection:bg-primary selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/80 backdrop-blur-md z-50 border-b border-slate-200 transition-all duration-300" id="navbar">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-2xl font-bold text-secondary tracking-tighter">Manoj<span class="text-primary">.dev</span></a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="nav-link text-sm font-medium text-slate-600 hover:text-primary transition-colors">About</a>
+                    <a href="#experience" class="nav-link text-sm font-medium text-slate-600 hover:text-primary transition-colors">Experience</a>
+                    <a href="#projects" class="nav-link text-sm font-medium text-slate-600 hover:text-primary transition-colors">Projects</a>
+                    <a href="#education" class="nav-link text-sm font-medium text-slate-600 hover:text-primary transition-colors">Education</a>
+                    <a href="#contact" class="nav-link text-sm font-medium text-slate-600 hover:text-primary transition-colors">Contact</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-primary focus:outline-none p-2 rounded-md">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 shadow-lg absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col shadow-inner">
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-indigo-50 hover:text-primary transition-colors mobile-link">About</a>
+                <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-indigo-50 hover:text-primary transition-colors mobile-link">Experience</a>
+                <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-indigo-50 hover:text-primary transition-colors mobile-link">Projects</a>
+                <a href="#education" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-indigo-50 hover:text-primary transition-colors mobile-link">Education</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-indigo-50 hover:text-primary transition-colors mobile-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 md:pt-48 md:pb-32 px-4 flex flex-col items-center justify-center text-center min-h-[90vh]">
+        <div class="max-w-3xl mx-auto">
+            <span class="text-primary font-semibold tracking-wider uppercase text-sm mb-4 block">Hi, my name is</span>
+            <h1 class="text-4xl md:text-6xl font-bold text-secondary mb-4 tracking-tight">Manoj Srinivas Kottur.</h1>
+            <h2 class="text-2xl md:text-4xl font-bold text-slate-500 mb-8">Senior Frontend / Angular Developer.</h2>
+            <p class="text-lg md:text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+                I am a developer with 4+ years of experience building scalable, secure, high-performance enterprise SaaS, AI-enabled, and financial-domain applications using Angular. Based in Bengaluru, Karnataka.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#experience" class="bg-primary hover:bg-indigo-700 text-white font-medium py-3 px-8 rounded-full shadow-lg shadow-indigo-200 transition-all transform hover:-translate-y-1">
+                    View Experience
+                </a>
+                <a href="mailto:manojsrinivaskottur@gmail.com" class="bg-white hover:bg-slate-50 text-secondary border border-slate-200 font-medium py-3 px-8 rounded-full shadow-sm transition-all transform hover:-translate-y-1">
+                    Get In Touch
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About & Skills Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center mb-10">
+                <h2 class="text-3xl font-bold text-secondary">About & Skills</h2>
+                <div class="h-px bg-slate-200 flex-1 ml-6"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="space-y-6 text-lg text-slate-600">
+                    <p>
+                        I am a Senior Frontend Developer passionate about crafting seamless user experiences and robust enterprise architectures. My focus is on Angular (up to v21), reactive programming with RxJS, secure front-end coding, and performance optimization.
+                    </p>
+                    <p>
+                        I have extensive experience collaborating in Agile environments, working with Java backend teams, leading framework upgrades, and ensuring high code quality through Jasmine and Playwright testing.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-secondary mb-4">Technical Arsenal</h3>
+                    <div class="grid grid-cols-2 gap-y-3 gap-x-2 text-sm font-medium text-slate-700">
+                        <div class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Angular 10-21 / Typescript</div>
+                        <div class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> RxJS</div>
+                        <div class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> JavaScript / HTML5 / CSS</div>
+                        <div class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> System Design</div>
+                        <div class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Secure Front-end Coding</div>
+                        <div class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Core Java</div>
+                        <div class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Bootstrap / Material UI / PrimeNG</div>
+                        <div class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Jasmine / Jest / Playwright</div>
+                        <div class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Endtest / Postman</div>
+                        <div class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Git / Agile / Scrum</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-slate-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center mb-12">
+                <h2 class="text-3xl font-bold text-secondary">Professional Experience</h2>
+                <div class="h-px bg-slate-200 flex-1 ml-6"></div>
+            </div>
+
+            <div class="space-y-12">
+                <!-- Job 1 -->
+                <div class="relative pl-8 md:pl-0">
+                    <div class="md:hidden absolute left-0 top-2 w-3 h-3 bg-primary rounded-full border-4 border-slate-50"></div>
+                    <div class="hidden md:block absolute left-[-29px] top-2 w-3 h-3 bg-primary rounded-full border-4 border-slate-50 z-10"></div>
+                    <div class="hidden md:block absolute left-[-24px] top-4 bottom-[-60px] w-0.5 bg-slate-200 z-0"></div>
+                    
+                    <div class="flex flex-col md:flex-row md:justify-between mb-2">
+                        <h3 class="text-xl font-bold text-secondary">Senior Software Engineer <span class="text-primary">@ ReBIT (subsidiary of RBI)</span></h3>
+                        <span class="text-sm font-mono text-slate-500 mt-1 md:mt-0">Feb 2026 - Present</span>
+                    </div>
+                    <p class="text-sm font-medium text-slate-500 mb-4">Project: RBI Internal Tools - Gov of India Currency Remittance</p>
+                    <ul class="list-none space-y-3 text-slate-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-caret-right text-primary mt-1 mr-3 flex-shrink-0"></i>
+                            <span>Developed Angular 19-21 applications and internal tools for RBI supporting currency remittance of the Government of India.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-caret-right text-primary mt-1 mr-3 flex-shrink-0"></i>
+                            <span>Built complex, form-driven workflows with robust validation and secure front-end coding practices (input validation and sanitization).</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-caret-right text-primary mt-1 mr-3 flex-shrink-0"></i>
+                            <span>Integrated frontend with Java backend services; wrote Jasmine unit tests and Playwright E2E tests.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-caret-right text-primary mt-1 mr-3 flex-shrink-0"></i>
+                            <span>Contributed to Angular version upgrades (19 to 21), resolving breaking changes, and mentored ~5 engineers.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="relative pl-8 md:pl-0">
+                    <div class="md:hidden absolute left-0 top-2 w-3 h-3 bg-slate-400 rounded-full border-4 border-slate-50"></div>
+                    <div class="hidden md:block absolute left-[-29px] top-2 w-3 h-3 bg-slate-400 rounded-full border-4 border-slate-50 z-10"></div>
+                    <div class="hidden md:block absolute left-[-24px] top-4 bottom-[-60px] w-0.5 bg-slate-200 z-0"></div>
+
+                    <div class="flex flex-col md:flex-row md:justify-between mb-2">
+                        <h3 class="text-xl font-bold text-secondary">Software Analyst <span class="text-primary">@ ITOrizon India Pvt Ltd</span></h3>
+                        <span class="text-sm font-mono text-slate-500 mt-1 md:mt-0">Oct 2022 - Feb 2026</span>
+                    </div>
+                    <p class="text-sm font-medium text-slate-500 mb-4">Project: Karolium (Supply Chain SaaS Platform)</p>
+                    <ul class="list-none space-y-3 text-slate-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-caret-right text-primary mt-1 mr-3 flex-shrink-0"></i>
+                            <span>Led Angular migration from v10 to v15, resolving breaking changes and ensuring backward compatibility.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-caret-right text-primary mt-1 mr-3 flex-shrink-0"></i>
+                            <span>Improved application performance by ~50% through targeted UI and bundle optimizations.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-caret-right text-primary mt-1 mr-3 flex-shrink-0"></i>
+                            <span>Raised code coverage to ~50% (covering ~250k lines) by leading test-writing initiatives with the team.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-caret-right text-primary mt-1 mr-3 flex-shrink-0"></i>
+                            <span>Developed workflow-driven and reusable widget-based UI systems using Mermaid and Gridster with deep customizations.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Job 3 -->
+                <div class="relative pl-8 md:pl-0">
+                    <div class="md:hidden absolute left-0 top-2 w-3 h-3 bg-primary rounded-full border-4 border-slate-50"></div>
+                    <div class="hidden md:block absolute left-[-29px] top-2 w-3 h-3 bg-primary rounded-full border-4 border-slate-50 z-10"></div>
+                    <div class="hidden md:block absolute left-[-24px] top-4 bottom-[-60px] w-0.5 bg-slate-200 z-0"></div>
+                    
+                    <div class="flex flex-col md:flex-row md:justify-between mb-2">
+                        <h3 class="text-xl font-bold text-secondary">Software Analyst <span class="text-primary">@ ITOrizon India Pvt Ltd</span></h3>
+                        <span class="text-sm font-mono text-slate-500 mt-1 md:mt-0">Oct 2022 - Feb 2026</span>
+                    </div>
+                    <p class="text-sm font-medium text-slate-500 mb-4">Project: Karolium (Supply Chain SaaS Platform)</p>
+                    <ul class="list-none space-y-3 text-slate-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-caret-right text-primary mt-1 mr-3 flex-shrink-0"></i>
+                            <span>Led Angular migration from v10 to v15, resolving breaking changes and ensuring backward compatibility.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-caret-right text-primary mt-1 mr-3 flex-shrink-0"></i>
+                            <span>Improved application performance by ~50% through targeted UI and bundle optimizations.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-caret-right text-primary mt-1 mr-3 flex-shrink-0"></i>
+                            <span>Raised overall code coverage to ~50% (covering ~250k lines) by leading test-writing initiatives with the team.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-caret-right text-primary mt-1 mr-3 flex-shrink-0"></i>
+                            <span>Mentored 4-5 junior developers on Angular best practices, RxJS patterns, and clean code principles.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-caret-right text-primary mt-1 mr-3 flex-shrink-0"></i>
+                            <span>Developed workflow-driven and reusable widget-based UI systems using Mermaid and Gridster with deep customizations.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="relative pl-8 md:pl-0">
+                    <div class="md:hidden absolute left-0 top-2 w-3 h-3 bg-slate-300 rounded-full border-4 border-slate-50"></div>
+                    <div class="hidden md:block absolute left-[-29px] top-2 w-3 h-3 bg-slate-300 rounded-full border-4 border-slate-50 z-10"></div>
+
+                    <div class="flex flex-col md:flex-row md:justify-between mb-2">
+                        <h3 class="text-xl font-bold text-secondary">Intern <span class="text-primary">@ Attra Infotech Pvt Ltd</span></h3>
+                        <span class="text-sm font-mono text-slate-500 mt-1 md:mt-0">Aug 2021 - Sep 2021</span>
+                    </div>
+                    <ul class="list-none space-y-3 text-slate-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-caret-right text-primary mt-1 mr-3 flex-shrink-0"></i>
+                            <span>Drafted security documentation for network systems as part of the Information Security department.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center mb-12">
+                <h2 class="text-3xl font-bold text-secondary">Projects</h2>
+                <div class="h-px bg-slate-200 flex-1 ml-6"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Card 1 -->
+                <div class="group bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col">
+                    <div class="p-8 flex-1 flex flex-col">
+                        <div class="flex justify-between items-center mb-6">
+                            <i class="fas fa-building-columns text-4xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-secondary mb-3 group-hover:text-primary transition-colors">RBI Currency Remittance Platform</h3>
+                        <p class="text-slate-600 text-sm mb-6 flex-1">
+                            An internal tool supporting government currency remittance. Built with complex form-driven workflows, stringent input sanitization, and secure frontend practices. Integrated with Java backend.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs font-mono text-slate-500 mt-auto">
+                            <span class="bg-slate-100 px-2 py-1 rounded">Angular 21</span>
+                            <span class="bg-slate-100 px-2 py-1 rounded">Playwright</span>
+                            <span class="bg-slate-100 px-2 py-1 rounded">Jasmine</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="group bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col">
+                    <div class="p-8 flex-1 flex flex-col">
+                        <div class="flex justify-between items-center mb-6">
+                            <i class="fas fa-boxes-packing text-4xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-secondary mb-3 group-hover:text-primary transition-colors">Karolium Supply Chain Widgets</h3>
+                        <p class="text-slate-600 text-sm mb-6 flex-1">
+                            Workflow-driven, reusable widget-based UI systems developed for an enterprise SaaS platform. Heavily utilized deep library customizations and responsive layout methodologies.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs font-mono text-slate-500 mt-auto">
+                            <span class="bg-slate-100 px-2 py-1 rounded">Mermaid</span>
+                            <span class="bg-slate-100 px-2 py-1 rounded">Gridster</span>
+                            <span class="bg-slate-100 px-2 py-1 rounded">RxJS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="group bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col">
+                    <div class="p-8 flex-1 flex flex-col">
+                        <div class="flex justify-between items-center mb-6">
+                            <i class="fas fa-wallet text-4xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-secondary mb-3 group-hover:text-primary transition-colors">Expense Management App</h3>
+                        <p class="text-slate-600 text-sm mb-6 flex-1">
+                            A mobile-first web app featuring multi-user group creation, dynamic location-based currency formatting, Gmail invitations, and comprehensive spending analytics.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs font-mono text-slate-500 mt-auto">
+                            <span class="bg-slate-100 px-2 py-1 rounded">Angular</span>
+                            <span class="bg-slate-100 px-2 py-1 rounded">Tailwind</span>
+                            <span class="bg-slate-100 px-2 py-1 rounded">REST API</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 bg-slate-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center mb-12">
+                <h2 class="text-3xl font-bold text-secondary">Education</h2>
+                <div class="h-px bg-slate-200 flex-1 ml-6"></div>
+            </div>
+
+            <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100 flex flex-col md:flex-row md:justify-between items-start md:items-center">
+                <div>
+                    <h3 class="text-xl font-bold text-secondary">Bachelor of Engineering in Computer Science & Engineering</h3>
+                    <p class="text-primary font-medium mt-1">GCEM (Visvesvaraya Technological University)</p>
+                    <p class="text-slate-500 text-sm mt-2"><i class="fas fa-graduation-cap mr-2"></i> 8.01 CGPA</p>
+                </div>
+                <div class="mt-4 md:mt-0 text-slate-400 font-mono text-sm">
+                    August 2018 - July 2022
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 bg-white">
+        <div class="max-w-2xl mx-auto px-4 text-center">
+            <span class="text-primary font-semibold tracking-wider uppercase text-sm mb-4 block">What's Next?</span>
+            <h2 class="text-4xl md:text-5xl font-bold text-secondary mb-6">Get In Touch</h2>
+            <p class="text-lg text-slate-600 mb-10 leading-relaxed">
+                Whether you have a question about my experience, want to discuss system design, or just want to connect, my inbox is always open.
+            </p>
+            
+            <a href="mailto:manojsrinivaskottur@gmail.com" class="inline-block bg-primary hover:bg-indigo-700 text-white font-medium py-4 px-10 rounded-md transition-colors duration-300 shadow-md">
+                manojsrinivaskottur@gmail.com
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-slate-400 py-10 text-center flex flex-col items-center">
+        <!-- Social Links -->
+        <div class="flex space-x-6 mb-6">
+            <a href="https://www.linkedin.com/in/manoj-srinivas-kottur-6a0365246/" target="_blank" rel="noopener noreferrer" class="hover:text-primary hover:-translate-y-1 transition-all duration-300">
+                <i class="fab fa-linkedin text-2xl"></i>
+            </a>
+            <a href="mailto:manojsrinivaskottur@gmail.com" class="hover:text-primary hover:-translate-y-1 transition-all duration-300">
+                <i class="fas fa-envelope text-2xl"></i>
+            </a>
+        </div>
+        <p class="text-sm font-mono">
+            Designed & Built by Manoj Srinivas Kottur
+        </p>
+        <p class="text-xs mt-2 opacity-60">
+            &copy; <span id="year"></span> All rights reserved.
+        </p>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const icon = btn.querySelector('i');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        }
+
+        btn.addEventListener('click', toggleMenu);
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (!menu.classList.contains('hidden')) {
+                    toggleMenu();
+                }
+            });
+        });
+
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-sm', 'bg-white/90');
+                navbar.classList.remove('bg-white/80');
+            } else {
+                navbar.classList.remove('shadow-sm', 'bg-white/90');
+                navbar.classList.add('bg-white/80');
+            }
+        });
+    </script>
+</body>
+</html>
